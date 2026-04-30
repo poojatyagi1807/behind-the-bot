@@ -1,0 +1,95 @@
+SAAS PLATFORM SUBSCRIPTION, BILLING AND SUPPORT POLICY
+Version 1.8 | Effective February 2024
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+SECTION 1: SUBSCRIPTION PLANS AND BILLING
+
+1.1 PLAN TIERS
+The platform offers three subscription tiers:
+- Starter: $29/month or $290/year (2 months free annually)
+- Professional: $79/month or $790/year
+- Enterprise: Custom pricing, annual commitment required
+
+1.2 BILLING CYCLES
+Monthly subscriptions are billed on the same date each month. Annual subscriptions are billed once per year on the renewal date. Customers will receive a 30-day advance notice email before annual renewal.
+
+1.3 FAILED PAYMENTS
+If a payment fails, the platform will retry the charge 3 times over 7 days. If payment is not resolved within 7 days, the account is downgraded to a read-only state. Data is preserved for 30 days during the grace period.
+
+1.4 SEAT-BASED PRICING
+Professional and Enterprise plans charge per seat (user). Adding seats mid-cycle is prorated for the remainder of the billing period. Removing seats takes effect at the next billing cycle — no mid-cycle credits for seat reduction.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+SECTION 2: REFUND POLICY
+
+2.1 MONEY-BACK GUARANTEE
+New subscribers on Starter and Professional plans are eligible for a full refund within 14 days of initial subscription. This applies to first-time subscriptions only. Renewals and plan upgrades are not covered by the money-back guarantee.
+
+2.2 ANNUAL PLAN CANCELLATIONS
+Annual subscribers who cancel after the 14-day guarantee window are not eligible for a prorated refund. The subscription remains active until the end of the paid annual period.
+
+2.3 MONTHLY PLAN CANCELLATIONS
+Monthly subscribers who cancel are not refunded for the current billing period. The subscription remains active until the end of the month. No partial-month refunds.
+
+2.4 BILLING ERRORS
+If the customer was charged incorrectly due to a platform error, a full refund of the erroneous charge will be issued within 5 business days. Customers must report billing errors within 60 days of the charge.
+
+2.5 ENTERPRISE REFUNDS
+Enterprise refund terms are defined in the individual service agreement and may differ from standard policy.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+SECTION 3: PLAN CHANGES
+
+3.1 UPGRADES
+Plan upgrades take effect immediately. The customer is charged a prorated amount for the remainder of the current billing cycle at the new plan rate.
+
+3.2 DOWNGRADES
+Plan downgrades take effect at the start of the next billing cycle. Customers retain access to current plan features until then. Features not available on the lower plan will be restricted after downgrade.
+
+3.3 DATA DURING DOWNGRADE
+If downgrading results in exceeding the new plan's data or seat limits, customers have 30 days to bring usage within limits before data is archived.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+SECTION 4: SERVICE AVAILABILITY AND SLA
+
+4.1 The platform targets 99.9% monthly uptime for Professional and Enterprise plans (Starter: 99.5%).
+
+4.2 Planned maintenance is scheduled during low-traffic windows and announced 48 hours in advance via the status page and email.
+
+4.3 If uptime falls below the guaranteed SLA in a given month, eligible customers may request a service credit:
+- Below 99.9%: 10% credit of monthly fee
+- Below 99.0%: 25% credit of monthly fee
+- Below 95.0%: 50% credit of monthly fee
+
+4.4 Service credits are applied to the next billing cycle. They are not redeemable for cash.
+
+4.5 SLA credits must be requested within 30 days of the incident.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+SECTION 5: DATA AND ACCOUNT MANAGEMENT
+
+5.1 DATA EXPORT
+Customers can export all their data at any time from account settings in CSV or JSON format.
+
+5.2 DATA RETENTION AFTER CANCELLATION
+After subscription cancellation, customer data is retained for 90 days. Within this window, customers can reactivate and recover their data. After 90 days, data is permanently deleted.
+
+5.3 ACCOUNT DELETION
+Customers may request permanent account deletion at any time. This is irreversible. Data is deleted within 30 days of request.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+SECTION 6: SUPPORT
+
+6.1 Starter plan customers receive email support with a 2 business day response SLA.
+
+6.2 Professional plan customers receive email and chat support with a 4 business hour response SLA.
+
+6.3 Enterprise customers receive dedicated account management, phone support, and a 1 business hour response SLA.
+
+6.4 All plans have access to the self-service knowledge base and community forum.
