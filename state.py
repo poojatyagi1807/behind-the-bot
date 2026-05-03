@@ -20,6 +20,7 @@ STEPS = [
     "reasoning",
     "output_guardrails",
     "response",
+    "judge",
     "observability",
 ]
 

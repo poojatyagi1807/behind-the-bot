@@ -122,13 +122,36 @@ border-radius:10px;padding:16px">
 </div>
 """, unsafe_allow_html=True)
 
-        # Why LLM was used
-        if result.get("llm_reason"):
-            st.markdown(f"""
-<div style="margin-top:8px;font-size:11px;color:var(--color-text-tertiary);
-padding:8px 10px;background:var(--color-background-secondary);border-radius:6px;
-border-left:2px solid #378ADD">
-🤖 Why LLM invoked: {result.get("llm_reason")}
+    # ML vs LLM cascade display
+    st.markdown("**How the cascade ran:**")
+
+    ml_color = "#1D9E75" if not result.get("used_llm") else "#BA7517"
+    llm_color = "#1D9E75" if result.get("used_llm") else "#888780"
+    ml_status = "✅ Ran — sufficient" if not result.get("used_llm") else "✅ Ran — low confidence, invoked LLM"
+    llm_status = "✅ Invoked — low confidence query" if result.get("used_llm") else "⏭ Skipped — ML confidence was high enough"
+
+    st.markdown(f"""
+<div style="display:flex;gap:8px;margin-bottom:12px">
+  <div style="flex:1;padding:10px 12px;background:var(--color-background-secondary);
+  border:0.5px solid {ml_color};border-radius:8px">
+    <div style="font-size:11px;font-weight:500;color:{ml_color};margin-bottom:4px">
+      Stage 1 — ML Classifier · {result.get("ml_processing_time_ms","—")}ms
+    </div>
+    <div style="font-size:11px;color:var(--color-text-secondary)">{ml_status}</div>
+    <div style="font-size:10px;color:var(--color-text-tertiary);margin-top:4px">
+      Confidence: {result.get("ml_confidence",0):.0%}
+    </div>
+  </div>
+  <div style="flex:1;padding:10px 12px;background:var(--color-background-secondary);
+  border:0.5px solid {llm_color};border-radius:8px">
+    <div style="font-size:11px;font-weight:500;color:{llm_color};margin-bottom:4px">
+      Stage 2 — LLM Classifier · {result.get("llm_processing_time_ms",0) or "—"}ms
+    </div>
+    <div style="font-size:11px;color:var(--color-text-secondary)">{llm_status}</div>
+    <div style="font-size:10px;color:var(--color-text-tertiary);margin-top:4px">
+      {result.get("llm_reason","") if result.get("used_llm") else "Not needed"}
+    </div>
+  </div>
 </div>
 """, unsafe_allow_html=True)
 
@@ -171,9 +194,11 @@ border-left:2px solid #378ADD">
 """)
 
     render_what_we_built(
-        "We used a single LLM call with a structured prompt to classify your message. "
-        "In production this would be a two-stage cascade — a fast ML classifier handles "
-        "80% of queries in under 10ms, and only ambiguous messages invoke the LLM."
+    "We use a two-stage cascade. A scikit-learn TF-IDF + Logistic Regression classifier "
+    "runs first on every message, trained on 120 labeled examples across 8 intents, runs "
+    "in under 5ms. If confidence is above 75%, the result is used directly and Gemini is "
+    "never called. Only ambiguous or low-confidence messages invoke the LLM — saving API "
+    "cost and reducing latency for the majority of queries."
     )
 
     render_enterprise_note(

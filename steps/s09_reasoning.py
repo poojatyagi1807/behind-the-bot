@@ -123,12 +123,28 @@ def render():
 
                     cot = ""
                     draft = raw
+
+                    # Extract thinking block
                     if "<thinking>" in raw and "</thinking>" in raw:
                         cot = raw.split("<thinking>")[1].split("</thinking>")[0].strip()
+
+                    # Extract response block
                     if "<response>" in raw and "</response>" in raw:
                         draft = raw.split("<response>")[1].split("</response>")[0].strip()
                     elif "</thinking>" in raw:
-                        draft = raw.split("</thinking>")[-1].strip()
+                        after = raw.split("</thinking>")[-1].strip()
+                        draft = after if after else raw
+                    else:
+                        # LLM didn't use tags — clean up any step-by-step preamble
+                        lines = raw.strip().split("\n")
+                        response_lines = []
+                        skip_prefixes = ("STEP ", "1.", "2.", "3.", "4.", "5.", "6.", "7.", "8.")
+                        for line in lines:
+                            if any(line.strip().startswith(p) for p in skip_prefixes):
+                                continue
+                            response_lines.append(line)
+                        cleaned = "\n".join(response_lines).strip()
+                        draft = cleaned if cleaned else raw
 
                     result = {
                         "chain_of_thought": cot,

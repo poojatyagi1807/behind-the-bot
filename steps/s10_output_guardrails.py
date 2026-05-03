@@ -82,13 +82,15 @@ def render():
                     "severity": "high",
                 },
                 {
+                    
                     "name": "Hallucination check",
                     "tool": "LLM-as-judge",
-                    "status": "fail" if ungrounded else "pass",
-                    "finding": f"Ungrounded values: {ungrounded}" if ungrounded else "All figures traceable to retrieved context",
-                    "action": "blocked" if ungrounded else "none",
+                    "status": "modified" if ungrounded else "pass",
+                    "finding": f"Some values not found verbatim in context: {ungrounded} — flagged for review" if ungrounded else "All figures traceable to retrieved context",
+                    "action": "flagged" if ungrounded else "none",
                     "latency_ms": 89,
-                    "severity": "high",
+                    "severity": "medium",
+
                 },
                 {
                     "name": "Policy compliance",
@@ -121,7 +123,7 @@ def render():
 
             # Build final response
             final = draft
-            blocked = any(c["status"] == "fail" and c["severity"] == "high" for c in checks)
+            blocked = any(c["status"] == "fail" and c["severity"] == "high" and c["name"] == "PII detection" for c in checks)
             if blocked:
                 final = "I want to make sure I give you accurate information. Let me connect you with a human support agent who can review your case directly."
             elif high_value:

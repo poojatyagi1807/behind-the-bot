@@ -162,19 +162,13 @@ STEP_INTROS = {
 # Domain-specific tool names
 DOMAIN_TOOLS = {
     "airbnb": ["lookup_booking", "check_refund_eligibility", "get_cancellation_policy", "create_support_ticket"],
-    "ecommerce": ["lookup_order", "check_return_eligibility", "get_return_policy", "create_return_label"],
-    "saas": ["lookup_subscription", "check_refund_eligibility", "get_billing_history", "create_support_ticket"],
 }
 
 # Domain labels
 DOMAIN_LABELS = {
     "airbnb": "Airbnb — Cancellation & Refunds",
-    "ecommerce": "E-commerce — Returns & Refunds",
-    "saas": "SaaS — Subscription Support",
 }
 
 DOMAIN_ICONS = {
     "airbnb": "🏠",
-    "ecommerce": "🛒",
-    "saas": "💻",
 }

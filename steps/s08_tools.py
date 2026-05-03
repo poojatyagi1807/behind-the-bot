@@ -59,53 +59,6 @@ def _simulate_airbnb_tools(profile):
         {"tool": "check_refund_eligibility", "latency": 108, "success": True, "output": refund},
     ]
 
-def _simulate_ecommerce_tools(profile):
-    order = {
-        "order_id": "ORD-847291",
-        "item": "Classic Fit Oxford Shirt — Size M",
-        "category": "Clothing",
-        "order_date": (datetime.now() - timedelta(days=8)).strftime("%Y-%m-%d"),
-        "delivery_date": (datetime.now() - timedelta(days=5)).strftime("%Y-%m-%d"),
-        "total_paid": 89.99,
-        "seller": "Platform Fulfilled",
-        "status": "delivered",
-    }
-    return_check = {
-        "eligible": True,
-        "reason": "Within 30-day window (8 days since order, 5 days since delivery)",
-        "return_type": "preference",
-        "refund_amount": 83.00,
-        "shipping_fee": 6.99,
-        "note": "Preference-based return — $6.99 return shipping applies. Item must be unused with tags.",
-    }
-    return [
-        {"tool": "lookup_order", "latency": 87, "success": True, "output": order},
-        {"tool": "check_return_eligibility", "latency": 92, "success": True, "output": return_check},
-    ]
-
-def _simulate_saas_tools(profile):
-    sub = {
-        "account_id": "ACC-19283",
-        "plan": "Professional",
-        "billing": "annual",
-        "amount": 790.00,
-        "signup_date": (datetime.now() - timedelta(days=180)).strftime("%Y-%m-%d"),
-        "renewal_date": (datetime.now() + timedelta(days=185)).strftime("%Y-%m-%d"),
-        "days_since_signup": 180,
-        "status": "active",
-    }
-    refund = {
-        "eligible": False,
-        "reason": "180 days since signup — outside 14-day money-back guarantee window",
-        "guarantee_window": "14 days from initial subscription",
-        "note": "Annual plan cancellation is non-refundable after 14-day window. Access continues until renewal date.",
-        "alternative": "Downgrade to Starter plan at next billing cycle",
-    }
-    return [
-        {"tool": "lookup_subscription", "latency": 91, "success": True, "output": sub},
-        {"tool": "check_refund_eligibility", "latency": 103, "success": True, "output": refund},
-    ]
-
 def render():
     render_topbar()
     domain = st.session_state.domain
@@ -122,12 +75,7 @@ def render():
         with st.spinner("Calling tools..."):
             time.sleep(1.0)
             profile = st.session_state.profile or {}
-            if domain == "airbnb":
-                calls = _simulate_airbnb_tools(profile)
-            elif domain == "ecommerce":
-                calls = _simulate_ecommerce_tools(profile)
-            else:
-                calls = _simulate_saas_tools(profile)
+            calls = _simulate_airbnb_tools(profile)
             result = {"calls": calls, "total_latency": sum(c["latency"] for c in calls)}
             store_result("tools", result)
 

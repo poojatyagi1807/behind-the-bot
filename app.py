@@ -76,11 +76,15 @@ elif step == "output_guardrails":
 elif step == "response":
     from steps.s11_response import render; render()
 
+elif step == "judge":
+    if needs_key_prompt():
+        render_key_prompt()
+    else:
+        from steps.s11b_judge import render; render()
+
 elif step == "observability":
     from steps.s12_observability import render; render()
     # Reset for next run
     if st.button("🔄 Start a new run", use_container_width=False):
-        for key in ["step", "profile", "query", "results", "errors", "doc_text", "llm_client"]:
-            if key in st.session_state:
-                del st.session_state[key]
+        st.session_state.clear()
         st.rerun()
