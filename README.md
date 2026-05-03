@@ -2,11 +2,13 @@
 
 > **See what happens between send and reply.**
 
-🔗 **Try it live:** *Coming soon on Streamlit Cloud*
+🔗 **Try it live:** https://behind-the-bot.streamlit.app/
 
 Most people experience AI as a black box — you type something, magic happens, an answer appears. Behind The Bot opens that box. Step by step. Layer by layer. Every decision visible.
 
 Built for students, curious professionals, and product managers who want to understand how AI customer support actually works — not the theory, the mechanics.
+
+> ⚠️ **This is a learning demo, not a production support agent.** Responses may not always be perfect — and that's the point. The goal is to show you what happens at each layer, not to give flawless answers.
 
 ---
 
